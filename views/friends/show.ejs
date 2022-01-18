@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+
+                <div class="card">
+
+                    <img class="card-img-top" src="<%=friend.image%>" alt="friend image">
+
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%=friend.name%>
+                        </h5>
+                        <p class="card-text">
+                            <%=friend.description%>
+                        </p>
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Hobbies: <%=friend.hobbies%>
+                        </li>
+                        <li class="list-group-item">Rating: <%=friend.rating%>
+                        </li>
+                        <li class="list-group-item">Birthday: <%= (friend.birthday == null) ? 'not listed' : friend.birthday.toDateString()%>
+                        </li>
+                        <li class="list-group-item">Lat met: <%= (friend.lastMet == null) ? 'never' : friend.lastMet.toDateString()%>
+                        </li>
+                    </ul>
+
+                    <div class="card-body">
+                        <a href="/friends" class="btn btn-info">All Friends</a>
+                        <a class="card-link btn btn-warning" href="/friends/<%=friend._id%>/edit">Edit</a>
+                        <form class="d-inline" action="/friends/<%=friend._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-8 offset-2">
+
+                <h1>New Friend</h1>
+
+                <form action="/friends" method="POST">
+
+                    <div class="form-group mb-3">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="friend[name]" required>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="image">Image URL</label>
+                        <input type="text" class="form-control" id="image" name="friend[image]">
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="description">Description</label>
+                        <textarea name="friend[description]" id="description" rows="10" class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="hobbies">Hobbies</label>
+                        <input type="text" class="form-control" id="hobbies" name="friend[hobbies]">
+                        <small id="hobbiesHelp" class="form-text text-muted">Comma separeted. Ex: "eat, work, sleep"</small>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <select class="form-control" id="rating" name="friend[rating]">
+                            <% for (let i = 1; i <= 10; i++) { %>
+                                <option <%= (i === 5) ? "selected" : ""  %>> <%=i%> </option> <!-- 5 is default -->
+                            <% } %>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="birthday" class="form-label">Birthday</label>
+                        <input type="date" class="form-control" id="birthday" name="friend[birthday]">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="lastMet" class="form-label">Last Met</label>
+                        <input type="date" class="form-control" id="lastMet" name="friend[lastMet]">
+                    </div>
+
+                    <div class="mb-3">
+                        <button class="btn btn-success">Add Friend</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>

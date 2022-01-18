@@ -1,0 +1,44 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="container">
+        <div class="row d-flex justify-content-between">
+            <div class="col-md-10">
+                <h1> All Friends </h1>
+            </div>
+
+            <div class="col-md-2">
+                <a class="btn btn-success" href="/friends/new">Add Friend</a>
+            </div>
+        </div>
+    </div>
+
+
+    <% for (let friend of friends){ %>
+        <div class="container">
+            <div class="card mb-4">
+                <div class="row">
+
+                    <div class="col-md-3">
+                        <img class="img-rounded img-fluid" alt="" src="<%=friend.image%>">
+                    </div>
+
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= friend.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= friend.description %>
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">Last met: <%= (friend.lastMet==null) ? 'never' :
+                                        friend.lastMet.toDateString()%></small>
+                            </p>
+                            <a class="btn btn-primary" href="/friends/<%=friend._id%>">View <%=friend.name%></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <% } %>
